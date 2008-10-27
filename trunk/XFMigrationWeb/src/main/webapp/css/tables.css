@@ -1,0 +1,111 @@
+table.base_table {
+	width: 100%;
+	background-color: rgb(243, 243, 243);
+	font-family: verdana;
+	font-size: 12px;
+	font-weight: 500;
+	text-align: left;
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+table.base_table th {
+	background-color: rgb(227, 227, 230);
+	font-size: 13px;
+	font-weight: 600;
+	padding-left: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: white;
+}
+
+table.base_table td {
+	padding-left: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: white;
+}
+
+table.base_table td.desc {
+	font-size: 10px;
+	text-align: left;
+}
+
+table.base_table th.lp {
+	width: 20px;
+	font-size: 11px;
+}
+
+div.title {
+	font-family: verdana;
+	font-size: 15px;
+	font-weight: 600;
+	margin-top: 20px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 10px;
+}
+
+div.table_border {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: orange;
+	padding: 1px;
+}
+
+div.monitor {
+	width: 79%;
+	margin-left: 10%;
+	margin-top: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: orange;
+	padding: 5px;
+	font-family: verdana;
+	font-size: 12px;
+	font-weight: 500;
+	height: 180px;
+	overflow: auto;
+}
+
+hr {
+	border: 1px;
+	border-top: 1px solid orange;
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+
+table.innerTable {
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+table.innerTable tr {
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+table.innerTable td {
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+table.innerTable td.error {
+	width: 100%;
+	text-align: right;
+	color: red;
+	font-size: 11px;
+	padding-right: 10px;
+	border-width: 0px;
+	border-collapse: collapse;
+}
+
+

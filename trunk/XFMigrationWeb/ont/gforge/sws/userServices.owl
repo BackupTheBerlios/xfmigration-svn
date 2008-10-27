@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE uridef [
+  <!ENTITY wsdl "http://localhost:8085/services/GForgeService?wsdl">
+]>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:expression="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns="http://www.example.org/owls/userServices.owl"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#"
+  xml:base="http://www.example.org/owls/userServices.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Grounding.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+  </owl:Ontology>
+  <service:Service rdf:ID="createUserService">
+    <service:presents>
+      <profile:Profile rdf:ID="createUserProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="createUserProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="createUserGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#createUserProfile">
+    <service:presentedBy rdf:resource="#createUserService"/>
+    <profile:serviceName>createUser</profile:serviceName>
+    <profile:textDescription>Auto generated desc</profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="user">
+        <rdfs:label>user</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/foaf/0.1/Person</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="createUserReturn">
+        <rdfs:label>createUserReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#createUserProcess">
+    <rdfs:label>createUserProcess</rdfs:label>
+    <service:describes rdf:resource="#createUserService"/>
+    <process:hasInput rdf:resource="#user"/>
+    <process:hasOutput rdf:resource="#createUserReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#createUserGrounding">
+    <service:supportedBy rdf:resource="#createUserService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="createUserAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#createUserAtomicProcessGrounding">
+    <grounding:owlsProcess rdf:resource="#createUserProcess"/>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#createUser</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#createUserRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#createUserResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#user"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#user</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:foaf="http://xmlns.com/foaf/0.1/"> 
+              <xsl:template match="/">
+                 	 <user xsi:type="mod:User" xmlns:mod="http://model.wrapper/">
+            			<emailAddress xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:mbox"/></emailAddress>
+            			<surname xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:surname"/></surname>
+            			<firstName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:firstName"/></firstName>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:accountName"/></unixName>
+            			<username xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:name"/></username>
+         			</user>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#createUserReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#createUserReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>

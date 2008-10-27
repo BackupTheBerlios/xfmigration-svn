@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:expression="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.example.org/owls/migrationSequenceServices.owl"
+    xml:base="http://www.example.org/owls/migrationSequenceServices.owl">
+	<owl:Ontology rdf:about="">
+	    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/sws/createIndividualsSequence.owl"/>
+	    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/sws/createPropertiesSequence.owl"/>
+  	</owl:Ontology>
+  	
+  	<!-- Service description -->
+	<service:Service rdf:ID="MigrationSequenceService">
+		<service:presents rdf:resource="#MigrationSequenceProfile"/>
+		<service:describedBy rdf:resource="#MigrationSequenceProcess"/>
+		<service:supports rdf:resource="#MigrationSequenceGrounding"/>
+	</service:Service>
+  	
+  	<!-- service profile -->
+  	<profile:Profile rdf:ID="MigrationSequenceProfile">
+		<service:isPresentedBy rdf:resource="#MigrationSequenceService"/>
+		<profile:serviceName xml:lang="en">migration sequence</profile:serviceName>
+	</profile:Profile>
+	
+  <process:CompositeProcess rdf:ID="MigrationSequenceProcess">
+    <process:composedOf>
+      <process:Sequence>
+        <process:components>
+          <process:ControlConstructList>
+            <list:first>
+              <process:Perform>
+                <process:process rdf:resource="http://www.example.org/owls/createIndividualSequenceServices.owl#CreateIndividualsSequenceProcess"/>
+              </process:Perform>
+            </list:first>
+            <list:rest>
+              <process:ControlConstructList>
+                <list:first>
+                  <process:Perform>
+                    <process:process rdf:resource="http://www.example.org/owls/createPropertiesSequenceServices.owl#CreatePropertiesSequenceProcess"/>
+                  </process:Perform>
+                </list:first>
+                <list:rest rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#nil"/>
+              </process:ControlConstructList>
+            </list:rest>
+          </process:ControlConstructList>
+        </process:components>
+      </process:Sequence>
+    </process:composedOf>
+  </process:CompositeProcess>
+</rdf:RDF>

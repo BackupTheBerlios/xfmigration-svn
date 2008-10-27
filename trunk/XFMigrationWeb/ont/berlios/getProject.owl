@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!DOCTYPE uridef [
+  <!ENTITY wsdl "http://localhost:8084/services/BerliosService?wsdl">
+]>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:expression="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#"
+    xmlns="http://www.example.org/owls/getProject.owl"
+  xml:base="http://www.example.org/owls/getProject.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Grounding.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+  </owl:Ontology>
+  <service:Service rdf:ID="getProjectService">
+    <service:presents>
+      <profile:Profile rdf:ID="getProjectProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="getProjectProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="getProjectGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#getProjectProfile">
+    <service:presentedBy rdf:resource="#getProjectService"/>
+    <profile:serviceName>getProject</profile:serviceName>
+    <profile:textDescription>Auto generated from &wsdl;</profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="unixname">
+        <rdfs:label>unixname</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="getProjectReturn">
+        <rdfs:label>getProjectReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#getProjectProcess">
+    <rdfs:label>getProjectProcess</rdfs:label>
+    <service:describes rdf:resource="#getProjectService"/>
+    <process:hasInput rdf:resource="#unixname"/>
+    <process:hasOutput rdf:resource="#getProjectReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#getProjectGrounding">
+    <service:supportedBy rdf:resource="#getProjectService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="getProjectAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#getProjectAtomicProcessGrounding">
+    <grounding:owlsProcess rdf:resource="#getProjectProcess"/>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#getProject</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#BerliosService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo.wrapper#getProjectRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo.wrapper#getProjectResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#unixname"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#unixname</grounding:wsdlMessagePart>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#getProjectReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#getProjectReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>

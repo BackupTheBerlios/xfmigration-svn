@@ -1,0 +1,12 @@
+[Dublin Core DL Redirect]
+http://localhost:8080/forges//swrl/tbox.owl
+http://localhost:8080/forges/gforge/sioc.rdf
+http://localhost:8080/forges/gforge/doap.rdf
+http://localhost:8080/forges/gforge/baetle.rdf
+http://localhost:8080/forges/gforge/qualipso_relationship.owl
+http://localhost:8080/forges/berlios/ontologyA.owl
+
+http://localhost:8080/forges/swrl/swrlx.owl
+http://localhost:8080/forges/swrl/swrla.owl
+http://localhost:8080/forges/swrl/abox.owl
+http://localhost:8080/forges/gforge/foafdl.rdf

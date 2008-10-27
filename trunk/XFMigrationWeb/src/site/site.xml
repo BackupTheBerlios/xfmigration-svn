@@ -1,0 +1,35 @@
+<project name="${project.name}">
+	<bannerLeft>
+		<name>XFMigrationWeb</name>
+		<href>http://qualipsowp32-t3.berlios.de/</href>
+	</bannerLeft>
+	<!--bannerRight>
+		<name>Qualipso</name>
+		<src>
+			http://laburnum-small/maven2/resources/20070116+LOGO+QUALIPSO.png
+		</src>
+	</bannerRight-->
+
+	<publishDate position="navigation-bottom" format="MM-dd-yy" />
+	<body>
+		<links>
+			<item name="QualipsoWP32" href="../../../BuildConf/target/site/index.html" />
+			<item name="Qualipso" href="http://www.qualipso.org/" />
+			<item name="Maven" href="http://maven.apache.org/" />
+		</links>
+		<head>
+			<meta name="faq" content="proficio" />
+		</head>
+		<menu ref="parent" />
+		<menu name="Quick Links">
+			<!--item name="Features" href="/maven-features.html" /-->
+            <item name="Qualipso" href="http://www.qualipso.org/" />    
+		</menu>
+		<!--
+			menu name="About XFMigration">
+			<item name="What is XFMigration?" href="/what-is-xfmigration.html"/>
+			</menu>
+		-->
+		${reports}
+	</body>
+</project>

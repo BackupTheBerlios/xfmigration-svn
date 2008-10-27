@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:qr="http://www.qualipso.org/ontology/doc/qualipso_relationship#"
+    xmlns:temporal="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl#"
+    xmlns:j.0="http://xmlns.com/foaf/0.1/"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns="http://www.owl-ontologies.com/mapping1.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:wn="http://xmlns.com/wordnet/1.6/"
+    xmlns:a="http://www.man.poznan.pl/qualipso/ontologyA.owl#"
+    xmlns:swrlxml="http://swrl.stanford.edu/ontologies/built-ins/3.4/swrlxml.owl#"
+    xmlns:swrlx="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrlm="http://swrl.stanford.edu/ontologies/built-ins/3.4/swrlm.owl#"
+    xmlns:doap="http://usefulinc.com/ns/doap#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:abox="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:baetle="http://xmlns.com/baetle/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:j.1="http://rdfs.org/sioc/ns#"
+    xmlns:tbox="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl#"
+  xml:base="http://www.owl-ontologies.com/mapping1.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://localhost:8080/forges/swrl/swrla.owl"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/swrl/abox.owl"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/berlios/ontologyA.owl"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/sioc.rdf"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/swrl/tbox.owl"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/foafdl.rdf"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/baetle.rdf"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/qualipso_relationship.owl"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/gforge/doap.rdf"/>
+    <owl:imports rdf:resource="http://localhost:8080/forges/swrl/swrlx.owl"/>
+    <owl:imports rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl"/>
+  </owl:Ontology>
+  <doap:LGPL rdf:ID="SWRLCreated_1"/>
+  <baetle:Issue rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#bug014002">
+    <baetle:priority>
+      <baetle:Trivial rdf:ID="SWRLCreated_11"/>
+    </baetle:priority>
+    <baetle:resolvedWith>
+      <baetle:Committing rdf:ID="SWRLCreated_10">
+        <baetle:relates_to rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#bug014002"/>
+        <baetle:summary rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Later</baetle:summary>
+      </baetle:Committing>
+    </baetle:resolvedWith>
+    <baetle:assigned_to>
+      <j.1:User rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#membersandra">
+        <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Sandra Williams</j.0:name>
+        <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >mailto:sandra at users.berlios.de</j.0:mbox>
+        <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Williams</j.0:surname>
+        <j.1:creator_of>
+          <j.1:Post rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#bug014002com0">
+            <j.1:has_creator rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#membersandra"/>
+            <j.1:created_at rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >2008-06-11T00:31:00</j.1:created_at>
+            <j.1:content rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >The bug tracking class was changed.02</j.1:content>
+          </j.1:Post>
+        </j.1:creator_of>
+        <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Sandra</j.0:firstName>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >sandra</j.0:accountName>
+      </j.1:User>
+    </baetle:assigned_to>
+    <baetle:status>
+      <baetle:Later rdf:ID="SWRLCreated_12"/>
+    </baetle:status>
+    <baetle:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The ontology instance cannot be opened with Protege editor. Possibly the ontology has changed. The instance should be modified. </baetle:description>
+    <baetle:comment rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#bug014002com0"/>
+    <baetle:project>
+      <doap:Project rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#project-exp-02">
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberdavid">
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >David</j.0:firstName>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:david at users.berlios.de</j.0:mbox>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >david</j.0:accountName>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Reder</j.0:surname>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >David Reder</j.0:name>
+          </j.0:Person>
+        </doap:tester>
+        <doap:hasCategory rdf:resource="#SWRLCreated_1"/>
+        <doap:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >project-exp-02</doap:name>
+        <doap:hasCategory>
+          <doap:_2_Pre-AlphaClass rdf:ID="SWRLCreated_7"/>
+        </doap:hasCategory>
+        <doap:developer>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberhenry">
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >henry</j.0:accountName>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Henry Wilson</j.0:name>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:henry at users.berlios.de</j.0:mbox>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Henry</j.0:firstName>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Wilson</j.0:surname>
+          </j.0:Person>
+        </doap:developer>
+        <doap:os rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Linux</doap:os>
+        <doap:hasCategory>
+          <doap:Java rdf:ID="SWRLCreated_6"/>
+        </doap:hasCategory>
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberpaul">
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:paul at users.berlios.de</j.0:mbox>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Paul</j.0:firstName>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >paul</j.0:accountName>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Paul Stevenson</j.0:name>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Stevenson</j.0:surname>
+          </j.0:Person>
+        </doap:tester>
+        <doap:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The goal of this project is to investigate semantic interoperability aspects and to highlight approaches for enhancing semantic interoperability in the domain of Open Source Software (OSS).</doap:description>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#membersandra"/>
+        <doap:homepage rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >projectexp02.berlios.de</doap:homepage>
+        <doap:developer>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberwilliam">
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >May</j.0:surname>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >William</j.0:firstName>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:william at users.berlios.de</j.0:mbox>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >William May</j.0:name>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >william</j.0:accountName>
+          </j.0:Person>
+        </doap:developer>
+        <doap:developer>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberrobert">
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:robert at users.berlios.de</j.0:mbox>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Robert</j.0:firstName>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Robert Stake</j.0:name>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Stake</j.0:surname>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >robert</j.0:accountName>
+          </j.0:Person>
+        </doap:developer>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberdavid"/>
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberdaniel">
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Daniel Reid</j.0:name>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >daniel</j.0:accountName>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:daniel at users.berlios.de</j.0:mbox>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Reid</j.0:surname>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Daniel</j.0:firstName>
+          </j.0:Person>
+        </doap:tester>
+        <doap:hasCategory>
+          <doap:DevelopersClass rdf:ID="SWRLCreated_5"/>
+        </doap:hasCategory>
+        <doap:tester rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberwilliam"/>
+        <doap:programming-language rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Perl</doap:programming-language>
+        <doap:tester rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberhenry"/>
+        <doap:shortdesc rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >project-exp-02</doap:shortdesc>
+        <doap:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >LGPL</doap:license>
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberrobin">
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Robin Spencer</j.0:name>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Robin</j.0:firstName>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:robin at users.berlios.de</j.0:mbox>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Spencer</j.0:surname>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >robin</j.0:accountName>
+          </j.0:Person>
+        </doap:tester>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberdaniel"/>
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#jeff">
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >jeff</j.0:accountName>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Jeff</j.0:firstName>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Bright</j.0:surname>
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Jeff Bright</j.0:name>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:jeff at users.berlios.de</j.0:mbox>
+          </j.0:Person>
+        </doap:tester>
+        <doap:programming-language rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Java</doap:programming-language>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#jeff"/>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberrobin"/>
+        <doap:tester rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberrobert"/>
+        <doap:tester>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberkevin">
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Kevin Richardson</j.0:name>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Richardson</j.0:surname>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Kevin</j.0:firstName>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:kevin at users.berlios.de</j.0:mbox>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >kevin</j.0:accountName>
+          </j.0:Person>
+        </doap:tester>
+        <doap:category rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Development status : Pre-Alpha</doap:category>
+        <doap:hasCategory>
+          <doap:PHP rdf:ID="SWRLCreated_9"/>
+        </doap:hasCategory>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberpaul"/>
+        <doap:hasCategory>
+          <doap:LinuxClass rdf:ID="SWRLCreated_4"/>
+        </doap:hasCategory>
+        <doap:developer>
+          <j.0:Person rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberbrian">
+            <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Brian Hyde</j.0:name>
+            <j.0:surname rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Hyde</j.0:surname>
+            <j.0:mbox rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >mailto:brian at users.berlios.de</j.0:mbox>
+            <j.0:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >brian</j.0:accountName>
+            <j.0:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Brian</j.0:firstName>
+          </j.0:Person>
+        </doap:developer>
+        <doap:developer rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberkevin"/>
+        <doap:os rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Windows</doap:os>
+        <doap:hasCategory>
+          <doap:OtherLicense rdf:ID="SWRLCreated_2"/>
+        </doap:hasCategory>
+        <doap:tester rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#membersandra"/>
+        <doap:hasCategory>
+          <doap:WindowsClass rdf:ID="SWRLCreated_8"/>
+        </doap:hasCategory>
+        <doap:hasCategory>
+          <doap:OtherAudienceClass rdf:ID="SWRLCreated_3"/>
+        </doap:hasCategory>
+        <doap:tester rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberbrian"/>
+        <doap:category rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Pre-Alpha</doap:category>
+      </doap:Project>
+    </baetle:project>
+    <rdf:type rdf:resource="http://xmlns.com/baetle/Bug"/>
+    <baetle:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The ontology instance cannot be opened with Protege editor.</baetle:name>
+  </baetle:Issue>
+  <rdf:Description rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#ProjectIns2">
+    <a:programmingLanguage rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#HTML"/>
+  </rdf:Description>
+  <rdf:List>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Development status : </rdf:first>
+  </rdf:List>
+  <rdf:Description rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#Production">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Production</rdfs:label>
+  </rdf:Description>
+  <rdf:List>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Development status : </rdf:first>
+  </rdf:List>
+  <rdf:List>
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Development status : </rdf:first>
+  </rdf:List>
+  <rdf:Description rdf:about="http://www.man.poznan.pl/qualipso/ontologyA.owl#memberala">
+    <a:userFullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >alicja ciemniewska</a:userFullName>
+  </rdf:Description>
+  <swrl:AtomList/>
+  <swrl:AtomList/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 128)  http://protege.stanford.edu -->

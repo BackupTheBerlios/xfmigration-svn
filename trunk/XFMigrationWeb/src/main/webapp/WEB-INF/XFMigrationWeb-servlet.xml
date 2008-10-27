@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN 2.0//EN' 'http://www.springframework.org/dtd/spring-beans-2.0.dtd'>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+        http://www.directwebremoting.org/schema/spring-dwr 
+        http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+        
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/view/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<bean id="configurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>WEB-INF/classes/conf.properties</value>
+            </list>
+        </property>
+	</bean>
+	
+	<bean id="multipartResolver"
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!-- one of the properties available; the maximum file size in bytes -->
+	    <property name="maxUploadSize" value="500000"/>
+	</bean>
+
+	<!-- <bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>hibernate</value>
+			</list>
+		</property>
+	</bean> -->
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/main.htm">commonActionController</prop>
+				<prop key="/header.view">commonActionController</prop>
+				<prop key="/main.view">commonActionController</prop>
+				<prop key="/menu.view">commonActionController</prop>
+				<prop key="/forges.htm">commonActionController</prop>
+				<prop key="/mappings.htm">commonActionController</prop>
+				<prop key="/addForge.htm">registerForgeController</prop>
+				<prop key="/forgeDetails.htm">forgeDetailsController</prop>
+				<prop key="/addMapping.htm">registerMappingController</prop>
+				<prop key="/migrationWizard.htm">migrationWizardController</prop>
+				<prop key="/deleteMapping.htm">deleteMappingController</prop>
+				<prop key="/addService.htm">forgeServiceFormController</prop>
+				<prop key="/deleteService.htm">deleteServiceController</prop>
+				<prop key="/addLocalProject.htm">registerLocalProjectController</prop>
+				<prop key="/deleteLocalProject.htm">deleteForgeLocalProjectController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dwrHandlerMappings"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="1" />
+		<property name="alwaysUseFullPath" value="true"></property>
+		<property name="mappings">
+			<props>
+				<prop key="/dwr/**/*">dwrController</prop>
+				<prop key="/dwr/*">dwrController</prop>
+				<prop key="/engine.js">dwrController</prop>
+				<prop key="/interface.js">dwrController</prop>
+				<prop key="/call/**">dwrController</prop>
+				<prop key="/interface/**">dwrController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="commonActionController"
+		class="xfmigration.web.CommonActionController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="methodNameResolver">
+			<bean
+				class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+				<property name="mappings">
+					<props>
+						<prop key="/main.htm">mainframeRedirectHandle</prop>
+						<prop key="/header.view">headerViewHandle</prop>
+						<prop key="/main.view">mainViewHandle</prop>
+						<prop key="/menu.view">menuViewHandle</prop>
+						<prop key="/mappings.htm">mappingsViewHandle</prop>
+						<prop key="/forges.htm">forgesViewHandle</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="registerForgeController"
+		class="xfmigration.web.RegisterForgeController">
+		<property name="migrationService" ref="migrationServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>registerForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.RegisterForgeForm</value>
+		</property>
+		<property name="formView">
+			<value>/forges/newforge</value>
+		</property>
+		<property name="successView">
+			<value>redirect:forges.htm</value>
+		</property>
+		<property name="validator" ref="registerForgeValidator"/>
+	</bean>
+	
+	<bean id="registerLocalProjectController"
+		class="xfmigration.web.RegisterForgeLocalProjectController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>registerForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.RegisterLocalProjectForm</value>
+		</property>
+		<property name="formView">
+			<value>/forges/newLocalProject</value>
+		</property>
+		<property name="successView">
+			<value>redirect:forgeDetails.htm</value>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="forgeServiceFormController"
+		class="xfmigration.web.ForgeServiceFormController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>forgeServiceForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.ForgeServiceForm</value>
+		</property>
+		<property name="formView">
+			<value>/forges/forgeService</value>
+		</property>
+		<property name="successView">
+			<value>redirect:forgeDetails.htm</value>
+		</property>
+		<property name="validator" ref="forgeServiceValidator"/>
+	</bean>
+
+	<bean id="forgeDetailsController"
+		class="xfmigration.web.ForgeDetailsFormController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>forgeDetailsForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.ForgeDetailsForm</value>
+		</property>
+		<property name="formView">
+			<value>/forges/forgeDetails</value>
+		</property>
+		<property name="successView">
+			<value>redirect:forges.htm</value>
+		</property>
+		<property name="validator" ref="forgeUpdateFormValidator" />
+	</bean>
+
+	<bean id="registerMappingController"
+		class="xfmigration.web.RegisterMappingController">
+		<property name="migrationService" ref="migrationServiceBean" />
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>registerForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.RegisterMappingForm</value>
+		</property>
+		<property name="formView">
+			<value>/mappings/newmapping</value>
+		</property>
+		<property name="successView">
+			<value>redirect:mappings.htm</value>
+		</property>
+		<property name="validator" ref="mappingFormValidator" />
+	</bean>
+
+	<bean id="migrationWizardController"
+		class="xfmigration.web.MigrationWizardFormController">
+		<property name="pages">
+			<list>
+				<value>migration/migration_page1</value>
+				<value>migration/migration_page2</value>
+				<value>migration/migration_page3</value>
+				<value>migration/migration_page4</value>
+			</list>
+		</property>
+		<property name="migrationService" ref="migrationServiceBean" />
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>migrationWizardForm</value>
+		</property>
+		<property name="commandClass">
+			<value>xfmigration.web.util.MigrationForm</value>
+		</property>
+	</bean>
+
+	<bean id="deleteMappingController"
+		class="xfmigration.web.DeleteMappingController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="redirectViewName">
+			<value>redirect:mappings.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteServiceController"
+		class="xfmigration.web.DeleteServiceController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="successView">
+			<value>redirect:forgeDetails.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteForgeLocalProjectController"
+		class="xfmigration.web.DeleteLocalProjectController">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="redirectViewName">
+			<value>redirect:forgeDetails.htm</value>
+		</property>
+	</bean>
+	
+	<dwr:controller id="dwrController" debug="true">
+		<dwr:config-param name="activeReverseAjaxEnabled" value="true" />
+	</dwr:controller>
+
+	<dwr:configuration>
+		<dwr:convert type="collection" class="java.util.Collection"></dwr:convert>
+	</dwr:configuration>
+
+	<bean id="processingMonitorBean" class="xfmigration.exporter.ProcessingMonitorImpl"
+		scope="session">
+		<dwr:remote javascript="JsDwrMonitorBean">
+			<dwr:include method="getMessages" />
+		</dwr:remote>
+		<aop:scoped-proxy proxy-target-class="false" />
+	</bean>
+	
+	<bean id="registerForgeValidator" class="xfmigration.web.util.ForgeFormValidator"/>
+	
+	<bean id="forgeServiceValidator" class="xfmigration.web.util.ForgeServiceValidator"/>
+	
+	<bean id="mappingFormValidator" class="xfmigration.web.util.MappingFormValidator" />
+	
+	<bean id="forgeUpdateFormValidator" class="xfmigration.web.util.ForgeUpdateFormValidator"></bean>
+	 
+	<bean id="exceptionResolver" 
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <value>java.lang.Exception=common/error-view</value>
+        </property>
+    </bean>
+</beans>

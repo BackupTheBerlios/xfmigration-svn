@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+		
+	<bean id="xfmigDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>org.postgresql.Driver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>jdbc:postgresql://localhost:5432/postgres</value>
+		</property>
+		<property name="user">
+			<value>postgres</value>
+		</property>
+		<property name="password">
+			<value>postgres</value>
+		</property>
+		<property name="acquireRetryAttempts"><value>2</value></property>
+		<property name="testConnectionOnCheckin"><value>true</value></property>
+		<property name="testConnectionOnCheckout"><value>false</value></property>
+		<property name="maxIdleTime"><value>360</value></property>
+		<property name="idleConnectionTestPeriod"><value>30</value></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="xfmigDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>/xfmigration/domain/Forge.hbm.xml</value>
+				<value>/xfmigration/domain/Mapping.hbm.xml</value>
+				<value>/xfmigration/domain/Service.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+                <prop key="hibernate.c3p0.idle_test_period">30</prop> <!-- seconds -->
+                <prop key="hibernate.c3p0.max_size">1</prop>
+                <prop key="hibernate.c3p0.max_statements">0</prop>
+                <prop key="hibernate.c3p0.min_size">1</prop>
+                <prop key="hibernate.c3p0.timeout">1800</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

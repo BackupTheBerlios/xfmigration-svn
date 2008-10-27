@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<bean id="repositoryServiceBean"
+		class="xfmigration.migration.impl.RepositoryServiceImpl">
+		<property name="forgeDao" ref="forgeDaoBean" />
+		<property name="mappingDao" ref="mappingDaoBean" />
+		<property name="forgeServiceDao" ref="forgeServiceDaoBean" />
+		<property name="repositoryConf" ref="repositoryConfigurer" />
+	</bean>
+
+	<bean id="mappingServiceBean"
+		class="xfmigration.mapping.MappingServiceImpl">
+	</bean>
+
+	<bean id="migrationFacilityServiceBean"
+		class="xfmigration.migration.impl.MigrationFacilityServiceImpl">
+		<property name="mappingService" ref="mappingServiceBean" />
+		<property name="repositoryConf" ref="repositoryConfigurer" />
+		<property name="processingMonitor" ref="processingMonitorBean"/>
+	</bean>
+
+	<bean id="repositoryConfigurer" class="xfmigration.web.util.RepositoryConfigurer">
+		<property name="repositoryPath">
+			<value>${repositoryPath}</value>
+		</property>
+		<property name="testdataDirName">
+			<value>${testdataDirName}</value>
+		</property>
+		<property name="swsDirName">
+			<value>${swsDirName}</value>
+		</property>
+	</bean>
+
+	<bean id="migrationServiceBean"
+		class="xfmigration.migration.impl.XFMigrationServiceImpl">
+		<property name="repositoryService" ref="repositoryServiceBean" />
+		<property name="migrationFacilityService"
+			ref="migrationFacilityServiceBean" />
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+    	<tx:attributes>
+	      <tx:method name="get*" read-only="true"/>
+	      <tx:method name="update*" propagation="REQUIRED"/>
+	      <tx:method name="delete*" propagation="REQUIRED"/>
+	    </tx:attributes>
+	</tx:advice>
+  
+  <aop:config>
+   <aop:pointcut id="repositoryServiceOperation" expression="execution(* xfmigration.migration.IRepositoryService.*(..))"/>
+	<aop:advisor advice-ref="txAdvice" pointcut-ref="repositoryServiceOperation"/>
+  </aop:config>
+</beans>

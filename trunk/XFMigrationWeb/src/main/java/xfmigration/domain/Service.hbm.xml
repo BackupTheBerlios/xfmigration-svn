@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="xfmigration.domain.Service" table="services" schema="xfmigration">
+		<id name="serviceId" column="service_id" type="java.lang.Integer">
+			<generator class="sequence">
+				<param name="sequence">xfmigration.services_seq_id</param>
+			</generator>
+		</id>
+		<property 
+			name="serviceName"
+			column="service_name"
+			type="java.lang.String" />
+		<property 
+			name="servicePath"
+			column="service_path"
+			type="java.lang.String" />
+		<property 
+			name="forgeId"
+			column="forge_id"
+			type="java.lang.Integer" />
+		<property 
+			name="description"
+			column="description"
+			type="java.lang.String" />	
+	</class>
+</hibernate-mapping>

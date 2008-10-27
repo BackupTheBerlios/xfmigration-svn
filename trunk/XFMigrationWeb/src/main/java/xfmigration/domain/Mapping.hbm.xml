@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="xfmigration.domain.Mapping" table="mappings" schema="xfmigration" lazy="false">
+		<id name="id" column="mapping_id" type="java.lang.Integer">
+			<generator class="sequence">
+				<param name="sequence">xfmigration.mapping_id_seq</param>
+			</generator>
+		</id>
+		<property 
+			name="mappingURL"
+			column="mapping_url"
+			type="java.lang.String" />
+		<property 
+			name="mappingName"
+			column="mapping_name"
+			type="java.lang.String" />
+		<property 
+			name="description"
+			column="description" 
+			type="java.lang.String"/>
+		<many-to-one 
+			name="srcForge"
+			column="src_forge_id"
+			not-null="true" 
+			lazy="false"/>
+		<many-to-one 
+			name="destForge"
+			column="dest_forge_id"
+			not-null="true" 
+			lazy="false"/>		
+	</class>
+</hibernate-mapping>

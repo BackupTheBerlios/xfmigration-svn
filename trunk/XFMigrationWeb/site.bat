@@ -1,0 +1,1 @@
+mvn site -Dmaven.test.skip=true -o

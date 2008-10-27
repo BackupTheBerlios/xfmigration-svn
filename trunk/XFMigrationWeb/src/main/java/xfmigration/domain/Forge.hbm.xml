@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="xfmigration.domain.Forge" table="forges" schema="xfmigration" lazy="false">
+		<id name="id" column="forge_id" type="java.lang.Integer">
+			<generator class="sequence">
+				<param name="sequence">xfmigration.forge_id_seq</param>
+			</generator>
+		</id>
+		<property 
+			name="forgeName"
+			column="forge_name"
+			type="java.lang.String" />
+		<property 
+			name="ontologyUri"
+			column="ontology_uri"
+			type="java.lang.String" />
+		<property 
+			name="ontologyUrl"
+			column="ontology_url"
+			type="java.lang.String" />
+		<property 
+			name="wsdlUrl"
+			column="wsdl_url"
+			type="java.lang.String" />
+		<property 
+			name="owlsUrl"
+			column="owls_url"
+			type="java.lang.String" />	
+		<property 
+			name="forgeDescription"
+			column="forge_desc" 
+			type="java.lang.String"/>
+		
+		<set name="services" lazy="false" order-by="service_id" cascade="save-update,persist">
+			<key column="forge_id"/>
+			<one-to-many class="xfmigration.domain.Service"/>
+		</set>
+		<property 
+			name="importOwlsPath"
+			column="import_owls_url" 
+			type="java.lang.String"/>
+		<property 
+			name="homeDir"
+			column="home_dir" 
+			type="java.lang.String"/>
+		<property 
+			name="owlsCreateIndividualsSequencePath"
+			column="owls_object_sequence" 
+			type="java.lang.String"/>
+		<property 
+			name="owlsCreateObjPropertiesSequencePath"
+			column="owls_properties_sequence" 
+			type="java.lang.String"/>	
+		<property 
+			name="testdataDir"
+			column="testdata_dir" 
+			type="java.lang.String"/>					
+	</class>
+</hibernate-mapping>

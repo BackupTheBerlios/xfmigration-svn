@@ -1,0 +1,768 @@
+<?xml version="1.0"?>
+<!DOCTYPE uridef [
+  <!ENTITY wsdl "http://localhost:8085/services/GForgeService?wsdl">
+]>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:expression="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+    xmlns="http://www.example.org/owls/issueServices.owl"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#"
+  xml:base="http://www.example.org/owls/issueServices.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Grounding.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+  </owl:Ontology>
+  <service:Service rdf:ID="createIssueItemService">
+    <service:presents>
+      <profile:Profile rdf:ID="createIssueItemProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="createIssueItemProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="createIssueItemGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#createIssueItemProfile">
+    <service:presentedBy rdf:resource="#createIssueItemService"/>
+    <profile:serviceName>createIssueItem</profile:serviceName>
+    <profile:textDescription>comment</profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="issue">
+        <rdfs:label>issue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/Issue</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="project">
+        <rdfs:label>project</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/project</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="createIssueItemReturn">
+        <rdfs:label>createIssueItemReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#createIssueItemProcess">
+    <rdfs:label>createIssueItemProcess</rdfs:label>
+    <service:describes rdf:resource="#createIssueItemService"/>
+    <process:hasInput rdf:resource="#issue"/>
+    <process:hasInput rdf:resource="#project"/>
+    <process:hasOutput rdf:resource="#createIssueItemReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#createIssueItemGrounding">
+    <service:supportedBy rdf:resource="#createIssueItemService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="createIssueItemAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#createIssueItemAtomicProcessGrounding">
+    <grounding:owlsProcess rdf:resource="#createIssueItemProcess"/>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#createIssueItem</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#createIssueItemRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#createIssueItemResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#issue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#issue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/rdf:RDF/*">
+              	 	 <issue xsi:type="mod:Issue" xmlns:mod="http://model.wrapper/">
+            			<issueType xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="local-name()"/></issueType>
+            			<name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:name"/></name>
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:description"/></description>
+         			</issue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+  		</grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#project"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#project</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:doap="http://usefulinc.com/ns/doap#"> 
+              <xsl:template match="/">
+                 	<project xsi:type="mod:Project" xmlns:mod="http://model.wrapper/">
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:description"/></description>
+            			<homepage xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:homepage"/></homepage>
+            			<shortDescription xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:shortdesc"/></shortDescription>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:name"/></unixName>
+         			</project>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#createIssueItemReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#createIssueItemReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+  </grounding:WsdlAtomicProcessGrounding>
+  
+  <!-- add issue assigned to property service -->
+  
+  <service:Service rdf:ID="addIssueAssignedToPropertyService">
+    <service:presents>
+      <profile:Profile rdf:ID="addIssueAssignedToPropertyProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="addIssueAssignedToPropertyProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="addIssueAssignedToPropertyGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#addIssueAssignedToPropertyProfile">
+    <service:presentedBy rdf:resource="#addIssueAssignedToPropertyService"/>
+    <profile:serviceName>addIssueAssignedToProperty</profile:serviceName>
+    <profile:textDescription></profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="issue">
+        <rdfs:label>issue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/Issue</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="project">
+        <rdfs:label>project</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/project</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="user">
+        <rdfs:label>user</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/assigned_to</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="addIssueAssignedToPropertyReturn">
+        <rdfs:label>addIssueAssignedToPropertyReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#addIssueAssignedToPropertyProcess">
+    <rdfs:label>addIssueAssignedToPropertyProcess</rdfs:label>
+    <service:describes rdf:resource="#addIssueAssignedToPropertyService"/>
+    <process:hasInput rdf:resource="#issue"/>
+    <process:hasInput rdf:resource="#project"/>
+    <process:hasInput rdf:resource="#user"/>
+    <process:hasOutput rdf:resource="#addIssueAssignedToPropertyReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#addIssueAssignedToPropertyGrounding">
+    <service:supportedBy rdf:resource="#addIssueAssignedToPropertyService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="addIssueAssignedToPropertyAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#addIssueAssignedToPropertyAtomicProcessGrounding">
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:owlsProcess rdf:resource="#addIssueAssignedToPropertyProcess"/>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#user"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#user</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:foaf="http://xmlns.com/foaf/0.1/"> 
+              <xsl:template match="/">
+                 	 <user xsi:type="mod:User" xmlns:mod="http://model.wrapper/">
+            			<emailAddress xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:mbox"/></emailAddress>
+            			<surname xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:surname"/></surname>
+            			<firstName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:firstName"/></firstName>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:accountName"/></unixName>
+            			<username xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/foaf:name"/></username>
+         			</user>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueAssignedToPropertyResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#project"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#project</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:doap="http://usefulinc.com/ns/doap#"> 
+              <xsl:template match="/">
+                 	<project xsi:type="mod:Project" xmlns:mod="http://model.wrapper/">
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:description"/></description>
+            			<homepage xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:homepage"/></homepage>
+            			<shortDescription xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:shortdesc"/></shortDescription>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:name"/></unixName>
+         			</project>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#issue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#issue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/rdf:RDF/*">
+              	 	 <issue xsi:type="mod:Issue" xmlns:mod="http://model.wrapper/">
+            			<issueType xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="local-name()"/></issueType>
+            			<name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:name"/></name>
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:description"/></description>
+         			</issue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueAssignedToPropertyRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#addIssueAssignedToPropertyReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueAssignedToPropertyReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueAssignedToProperty</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+  </grounding:WsdlAtomicProcessGrounding>
+  
+  <!-- add issue priority property service -->
+  
+  <service:Service rdf:ID="addIssuePriorityPropertyService">
+    <service:presents>
+      <profile:Profile rdf:ID="addIssuePriorityPropertyProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="addIssuePriorityPropertyProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="addIssuePriorityPropertyGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#addIssuePriorityPropertyProfile">
+    <service:presentedBy rdf:resource="#addIssuePriorityPropertyService"/>
+    <profile:serviceName>addIssuePriorityProperty</profile:serviceName>
+    <profile:textDescription></profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="issue">
+        <rdfs:label>issue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/Issue</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="project">
+        <rdfs:label>project</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/project</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="priorityValue">
+        <rdfs:label>priorityValue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/priority</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="addIssuePriorityPropertyReturn">
+        <rdfs:label>addIssuePriorityPropertyReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#addIssuePriorityPropertyProcess">
+    <rdfs:label>addIssuePriorityPropertyProcess</rdfs:label>
+    <service:describes rdf:resource="#addIssuePriorityPropertyService"/>
+    <process:hasInput rdf:resource="#issue"/>
+    <process:hasInput rdf:resource="#project"/>
+    <process:hasInput rdf:resource="#priorityValue"/>
+    <process:hasOutput rdf:resource="#addIssuePriorityPropertyReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#addIssuePriorityPropertyGrounding">
+    <service:supportedBy rdf:resource="#addIssuePriorityPropertyService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="addIssuePriorityPropertyAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#addIssuePriorityPropertyAtomicProcessGrounding">
+    <grounding:owlsProcess rdf:resource="#addIssuePriorityPropertyProcess"/>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssuePriorityProperty</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#priorityValue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#priorityValue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> 
+              <xsl:template match="/rdf:RDF/*">
+                 	   <priorityValue xsi:type="xsd:string"><xsl:value-of select="local-name()"/></priorityValue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#addIssuePriorityPropertyReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssuePriorityPropertyReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#project"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#project</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:doap="http://usefulinc.com/ns/doap#"> 
+              <xsl:template match="/">
+                 	<project xsi:type="mod:Project" xmlns:mod="http://model.wrapper/">
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:description"/></description>
+            			<homepage xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:homepage"/></homepage>
+            			<shortDescription xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:shortdesc"/></shortDescription>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:name"/></unixName>
+         			</project>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssuePriorityPropertyRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#issue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#issue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/rdf:RDF/*">
+              	 	 <issue xsi:type="mod:Issue" xmlns:mod="http://model.wrapper/">
+            			<issueType xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="local-name()"/></issueType>
+            			<name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:name"/></name>
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:description"/></description>
+         			</issue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssuePriorityPropertyResponse</grounding:wsdlOutputMessage>
+  </grounding:WsdlAtomicProcessGrounding>
+  
+  <!-- add issue resolved with property service -->
+  
+  <service:Service rdf:ID="addIssueResolvedWithPropertyService">
+    <service:presents>
+      <profile:Profile rdf:ID="addIssueResolvedWithPropertyProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="addIssueResolvedWithPropertyProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="addIssueResolvedWithPropertyGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#addIssueResolvedWithPropertyProfile">
+    <service:presentedBy rdf:resource="#addIssueResolvedWithPropertyService"/>
+    <profile:serviceName>addIssueResolvedWithProperty</profile:serviceName>
+    <profile:textDescription></profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="issue">
+        <rdfs:label>issue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/Issue</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="project">
+        <rdfs:label>project</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/project</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="value">
+        <rdfs:label>value</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/resolvedWith</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="addIssueResolvedWithPropertyReturn">
+        <rdfs:label>addIssueResolvedWithPropertyReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#addIssueResolvedWithPropertyProcess">
+    <rdfs:label>addIssueResolvedWithPropertyProcess</rdfs:label>
+    <service:describes rdf:resource="#addIssueResolvedWithPropertyService"/>
+    <process:hasInput rdf:resource="#issue"/>
+    <process:hasInput rdf:resource="#project"/>
+    <process:hasInput rdf:resource="#value"/>
+    <process:hasOutput rdf:resource="#addIssueResolvedWithPropertyReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#addIssueResolvedWithPropertyGrounding">
+    <service:supportedBy rdf:resource="#addIssueResolvedWithPropertyService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="addIssueResolvedWithPropertyAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#addIssueResolvedWithPropertyAtomicProcessGrounding">
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#issue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#issue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/rdf:RDF/*">
+              	 	 <issue xsi:type="mod:Issue" xmlns:mod="http://model.wrapper/">
+            			<issueType xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="local-name()"/></issueType>
+            			<name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:name"/></name>
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:description"/></description>
+         			</issue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueResolvedWithProperty</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueResolvedWithPropertyRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#addIssueResolvedWithPropertyReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueResolvedWithPropertyReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#value"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#value</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/">
+                 	   <value xsi:type="xsd:string"><xsl:value-of select="rdf:RDF/*/baetle:summary"/></value>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueResolvedWithPropertyResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#project"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#project</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:doap="http://usefulinc.com/ns/doap#"> 
+              <xsl:template match="/">
+                 	<project xsi:type="mod:Project" xmlns:mod="http://model.wrapper/">
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:description"/></description>
+            			<homepage xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:homepage"/></homepage>
+            			<shortDescription xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:shortdesc"/></shortDescription>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:name"/></unixName>
+         			</project>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:owlsProcess rdf:resource="#addIssueResolvedWithPropertyProcess"/>
+  </grounding:WsdlAtomicProcessGrounding>
+  
+  <!-- add issue status property service -->
+  
+  <service:Service rdf:ID="addIssueStatusPropertyService">
+    <service:presents>
+      <profile:Profile rdf:ID="addIssueStatusPropertyProfile"/>
+    </service:presents>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="addIssueStatusPropertyProcess"/>
+    </service:describedBy>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="addIssueStatusPropertyGrounding"/>
+    </service:supports>
+  </service:Service>
+  <profile:Profile rdf:about="#addIssueStatusPropertyProfile">
+    <service:presentedBy rdf:resource="#addIssueStatusPropertyService"/>
+    <profile:serviceName>addIssueStatusProperty</profile:serviceName>
+    <profile:textDescription></profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="issue">
+        <rdfs:label>issue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/Issue</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="project">
+        <rdfs:label>project</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/project</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="statusValue">
+        <rdfs:label>statusValue</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://xmlns.com/baetle/status</process:parameterType>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="addIssueStatusPropertyReturn">
+        <rdfs:label>addIssueStatusPropertyReturn</rdfs:label>
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+      </process:Output>
+    </profile:hasOutput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#addIssueStatusPropertyProcess">
+    <rdfs:label>addIssueStatusPropertyProcess</rdfs:label>
+    <service:describes rdf:resource="#addIssueStatusPropertyService"/>
+    <process:hasInput rdf:resource="#issue"/>
+    <process:hasInput rdf:resource="#project"/>
+    <process:hasInput rdf:resource="#statusValue"/>
+    <process:hasOutput rdf:resource="#addIssueStatusPropertyReturn"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#addIssueStatusPropertyGrounding">
+    <service:supportedBy rdf:resource="#addIssueStatusPropertyService"/>
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="addIssueStatusPropertyAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#addIssueStatusPropertyAtomicProcessGrounding">
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueStatusPropertyRequest</grounding:wsdlInputMessage>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >&wsdl;</grounding:wsdlDocument>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:owlsParameter rdf:resource="#addIssueStatusPropertyReturn"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueStatusPropertyReturn</grounding:wsdlMessagePart>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#statusValue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#statusValue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> 
+              <xsl:template match="/rdf:RDF/*">
+                 	   <statusValue xsi:type="xsd:string"><xsl:value-of select="local-name()"/></statusValue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#issue"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#issue</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+              xmlns:baetle="http://xmlns.com/baetle/"> 
+              <xsl:template match="/rdf:RDF/*">
+              	 	 <issue xsi:type="mod:Issue" xmlns:mod="http://model.wrapper/">
+            			<issueType xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="local-name()"/></issueType>
+            			<name xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:name"/></name>
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="baetle:description"/></description>
+         			</issue>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:owlsProcess rdf:resource="#addIssueStatusPropertyProcess"/>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://umo#addIssueStatusPropertyResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:owlsParameter rdf:resource="#project"/>
+        <grounding:wsdlMessagePart rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#project</grounding:wsdlMessagePart>
+        <grounding:xsltTransformationString>
+        <![CDATA[
+            <xsl:stylesheet version="1.0" 
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+              xmlns:doap="http://usefulinc.com/ns/doap#"> 
+              <xsl:template match="/">
+                 	<project xsi:type="mod:Project" xmlns:mod="http://model.wrapper/">
+            			<description xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:description"/></description>
+            			<homepage xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:homepage"/></homepage>
+            			<shortDescription xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:shortdesc"/></shortDescription>
+            			<unixName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><xsl:value-of select="rdf:RDF/*/doap:name"/></unixName>
+         			</project>
+      	      </xsl:template>
+            </xsl:stylesheet>
+        ]]>
+       </grounding:xsltTransformationString>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#addIssueStatusProperty</grounding:operation>
+        <grounding:portType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >&wsdl;#GForgeService</grounding:portType>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>

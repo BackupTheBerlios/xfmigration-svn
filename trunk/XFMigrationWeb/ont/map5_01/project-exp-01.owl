@@ -1,0 +1,164 @@
+<?xml version="1.0"?> 
+<rdf:RDF 
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns="http://www.man.poznan.pl/qualipso/ontologyA.owl#" 
+ xmlns:owl="http://www.w3.org/2002/07/owl#" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+ xmlns:a="http://www.man.poznan.pl/qualipso/ontologyA.owl#" 
+ xml:base="http://www.man.poznan.pl/qualipso/ontologyA.owl"> 
+<owl:Ontology rdf:about=""> 
+<owl:imports rdf:resource="http://localhost:8080/forges/berlios/ontologyA.owl"/> 
+</owl:Ontology> 
+<a:Project rdf:ID="project-exp-01"> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">project-exp-01</a:fullName> 
+<a:unixName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">project-exp-01</a:unixName> 
+<a:homepageLink rdf:datatype="http://www.w3.org/2001/XMLSchema#string">projectexp01.berlios.de</a:homepageLink> 
+<a:shortDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The goal of this project is to investigate semantic interoperability aspects and to highlight approaches for enhancing semantic interoperability in the domain of Open Source Software (OSS).</a:shortDescription> 
+<a:hasDevelopmentStatus rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Pre-Alpha"/>
+<a:intendentAudience rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Developers"/>
+<a:intendentAudience rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#OtherAudience"/>
+<a:hasLicense rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#LGPL"/>
+<a:hasOperatingSystem rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Windows"/>
+<a:hasOperatingSystem rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Linux"/>
+<a:programmingLanguage rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Java"/>
+<a:programmingLanguage rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#PHP"/>
+<a:isRelatedToTopic rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Education"/>
+<a:hasMember> 
+<a:Member rdf:ID="memberanna"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Warsaw / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anna at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anna</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anna Smith</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberjohn"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Warsaw / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">john at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">john</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John Herman</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="membersteven"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Madrid / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">steven at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">steven</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Steven Banks</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberthomas"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Warsaw / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thomas at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thomas</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thomas Ludlow</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberjack"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Athens / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jack at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jack</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jack Oldmedow</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberpeter"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Warsaw / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peter at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peter</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peter Samson</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberlina"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Berlin / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lina at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lina</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lina Simphson</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberwayne"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Athens / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wayne at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wayne</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wayne Marshall</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberjustin"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Europe/Athens / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">justin at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">justin</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Justin Cox</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="memberrian"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> US/Alaska / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rian at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rian</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rian Hunter</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasMember> 
+<a:Member rdf:ID="membernick"> 
+<a:hasRole rdf:resource="http://www.man.poznan.pl/qualipso/ontologyA.owl#Tester"/> 
+<a:timezone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> US/Alaska / English</a:timezone> 
+<a:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</a:language> 
+<a:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nick at users.berlios.de</a:email> 
+<a:loginName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nick</a:loginName> 
+<a:fullName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nick Hartil</a:fullName> 
+</a:Member> 
+</a:hasMember> 
+<a:hasModule> 
+<a:Bugs rdf:ID="Bugs"> 
+<a:containsBugs> 
+<a:Bug rdf:ID="bug014002"> 
+<a:summary rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The ontology instance cannot be opened with Protege editor.</a:summary> 
+<a:assignedTo rdf:resource="#memberanna"/> 
+<a:resolution rdf:resource="#Later"/> 
+<a:hasPriority rdf:resource="#Priority1"/> 
+<a:detailedDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The ontology instance cannot be opened with Protege editor. Possibly the ontology has changed. The instance should be modified. </a:detailedDescription> 
+<a:forProject rdf:resource="#project-exp-01"/> 
+<a:bugCategory> 
+<a:BugCategory rdf:ID="bugCategory_xfmigration"> 
+<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xfmigration01</rdfs:label> 
+</a:BugCategory> 
+</a:bugCategory> 
+<a:comment> 
+<a:Comment rdf:ID="bug014002com0"> 
+<a:summary rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bug tracking class was changed.01</a:summary> 
+<a:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-06-11T00:31:00</a:dateSubmitted> 
+<a:submittedBy rdf:resource="#memberanna"/> 
+</a:Comment> 
+</a:comment> 
+</a:Bug> 
+</a:containsBugs> 
+</a:Bugs> 
+</a:hasModule> 
+</a:Project> 
+</rdf:RDF>
