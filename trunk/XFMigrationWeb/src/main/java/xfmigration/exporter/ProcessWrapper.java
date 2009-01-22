@@ -126,7 +126,7 @@ public class ProcessWrapper {
 				inputMap.setValue(input, individual);
 				//System.out.println(individual.toRDF());
 				String result = runner.executeService(inputMap);
-				monitor.addMessage("\tResult: " + result);
+				monitor.addMessage("  SWS response: " + result);
 				// results.add(result);
 			}
 			runner.dispose();
